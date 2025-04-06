@@ -1,0 +1,26 @@
+{
+  "family": "medusa-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::<your-account-id>:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "medusa",
+      "image": "REPLACEME",
+      "portMappings": [
+        {
+          "containerPort": 9000
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "DATABASE_URL",
+          "value": "postgres://user:password@host:5432/medusa_db"
+        }
+      ]
+    }
+  ]
+}
